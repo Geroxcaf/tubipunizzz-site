@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tubipunizzz | Tubi VTuber</title>
+  <meta name="description" content="Pagina ufficiale di Tubipunizzz / Tubi VTuber." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    :root{
+      --bg:#07070a;
+      --panel:rgba(13,13,18,0.76);
+      --stroke:rgba(255,255,255,0.10);
+      --text:#ffffff;
+      --muted:#cbc9d3;
+      --cyan:#25F4EE;
+      --pink:#FE2C55;
+      --shadow:0 18px 60px rgba(0,0,0,0.45);
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      min-height:100vh;
+      font-family:'Inter',sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      overflow-x:hidden;
+    }
+
+    body::before{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        linear-gradient(rgba(4,4,8,0.80), rgba(7,7,12,0.86)),
+        url("assets/tubi-background.png") 38% center / cover no-repeat;
+      z-index:-2;
+    }
+
+    body::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      background:
+        radial-gradient(circle at top left, rgba(37,244,238,0.07), transparent 25%),
+        radial-gradient(circle at top right, rgba(254,44,85,0.07), transparent 24%),
+        radial-gradient(circle at bottom center, rgba(138,108,255,0.07), transparent 30%);
+      z-index:-1;
+      pointer-events:none;
+    }
+
+    .page{
+      width:min(100%, 620px);
+      margin:0 auto;
+      padding:26px 16px 40px;
+    }
+
+    .hero, .section{
+      background:var(--panel);
+      backdrop-filter: blur(14px);
+      border:1px solid var(--stroke);
+      box-shadow:var(--shadow);
+      border-radius:32px;
+    }
+
+    .hero{
+      position:relative;
+      padding:28px 20px 22px;
+      overflow:hidden;
+    }
+
+    .glow{
+      position:absolute;
+      border-radius:999px;
+      filter:blur(32px);
+      opacity:.28;
+      pointer-events:none;
+    }
+
+    .glow.cyan{
+      width:180px;height:180px;
+      background:rgba(37,244,238,.32);
+      top:-60px; left:-40px;
+    }
+
+    .glow.pink{
+      width:170px;height:170px;
+      background:rgba(254,44,85,.24);
+      right:-40px; bottom:-50px;
+    }
+
+    .avatar-wrap{
+      width:136px;height:136px;
+      margin:0 auto 16px;
+      position:relative;
+    }
+
+    .avatar-wrap::before{
+      content:"";
+      position:absolute; inset:0;
+      border-radius:50%;
+      background:linear-gradient(135deg,var(--cyan),var(--pink));
+      transform:rotate(-9deg);
+      box-shadow:0 0 28px rgba(37,244,238,.18), 0 0 28px rgba(254,44,85,.18);
+    }
+
+    .avatar-wrap::after{
+      content:"";
+      position:absolute; inset:7px;
+      border-radius:50%;
+      background:#0d0d12;
+      transform:rotate(8deg);
+    }
+
+    .avatar{
+      position:absolute; inset:13px;
+      width:calc(100% - 26px);
+      height:calc(100% - 26px);
+      border-radius:50%;
+      object-fit:cover;
+      z-index:2;
+      border:2px solid rgba(255,255,255,.10);
+      background:#15151d;
+    }
+
+    .badge{
+      display:flex;
+      width:max-content;
+      margin:0 auto 12px;
+      gap:8px;
+      align-items:center;
+      padding:8px 12px;
+      border-radius:999px;
+      background:rgba(255,255,255,.06);
+      border:1px solid rgba(255,255,255,.10);
+      color:var(--muted);
+      font-size:13px;
+      position:relative;
+      z-index:1;
+    }
+
+    .dot{
+      width:8px;height:8px;border-radius:50%;
+      background:linear-gradient(135deg,var(--cyan),var(--pink));
+    }
+
+    h1{
+      text-align:center;
+      font-size:clamp(31px, 7vw, 44px);
+      line-height:1;
+      font-weight:800;
+      letter-spacing:-0.05em;
+      position:relative; z-index:1;
+    }
+
+    .subtitle{
+      max-width:420px;
+      margin:12px auto 18px;
+      text-align:center;
+      color:var(--muted);
+      line-height:1.65;
+      font-size:15px;
+      position:relative; z-index:1;
+    }
+
+    .highlight{
+      background:linear-gradient(90deg,var(--cyan),var(--pink));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .stats{
+      position:relative; z-index:1;
+      display:grid;
+      grid-template-columns:repeat(3,1fr);
+      gap:10px;
+    }
+
+    .stat{
+      padding:14px 10px;
+      text-align:center;
+      border-radius:18px;
+      background:rgba(255,255,255,.05);
+      border:1px solid rgba(255,255,255,.08);
+    }
+
+    .stat strong{display:block;font-size:16px;margin-bottom:4px}
+    .stat span{font-size:12px;color:var(--muted)}
+
+    .section{
+      margin-top:16px;
+      padding:18px;
+    }
+
+    .section h2{
+      font-size:18px;
+      margin-bottom:12px;
+      letter-spacing:-0.02em;
+    }
+
+    .section p{
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.7;
+    }
+
+    .links{
+      display:grid;
+      gap:12px;
+    }
+
+    .link-card, .disabled-card{
+      border-radius:22px;
+      border:1px solid rgba(255,255,255,.10);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      padding:16px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:14px;
+      min-height:78px;
+    }
+
+    .link-card{
+      text-decoration:none;
+      color:var(--text);
+      transition:transform .18s ease, border-color .18s ease, background .18s ease;
+    }
+
+    .link-card:hover{
+      transform:translateY(-2px);
+      border-color:rgba(37,244,238,.35);
+      background:linear-gradient(180deg, rgba(37,244,238,.10), rgba(254,44,85,.08));
+    }
+
+    .disabled-card{
+      opacity:.86;
+    }
+
+    .link-left{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      min-width:0;
+    }
+
+    .icon{
+      width:44px;height:44px;
+      display:grid;place-items:center;
+      border-radius:14px;
+      background:#11131a;
+      border:1px solid rgba(255,255,255,.10);
+      flex-shrink:0;
+    }
+
+    .icon i{
+      font-size:22px;
+      line-height:1;
+    }
+
+    .link-title{
+      font-size:15px;
+      font-weight:700;
+    }
+
+    .link-desc{
+      color:var(--muted);
+      font-size:12px;
+      margin-top:3px;
+    }
+
+    .arrow{
+      font-size:22px;
+      opacity:.72;
+      flex-shrink:0;
+    }
+
+    .tag{
+      font-size:12px;
+      font-weight:700;
+      color:#111;
+      background:linear-gradient(90deg,var(--cyan),#aaf3ff);
+      padding:7px 10px;
+      border-radius:999px;
+      white-space:nowrap;
+      flex-shrink:0;
+    }
+
+    .cta-row{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+
+    .mini-btn, .mini-btn-disabled{
+      padding:13px 12px;
+      border-radius:18px;
+      text-align:center;
+      font-size:14px;
+      font-weight:700;
+      border:1px solid rgba(255,255,255,.10);
+    }
+
+    .mini-btn{
+      text-decoration:none;
+      color:var(--text);
+      background:rgba(255,255,255,.05);
+    }
+
+    .mini-btn:hover{
+      background:rgba(255,255,255,.09);
+    }
+
+    .mini-btn-disabled{
+      color:var(--muted);
+      background:rgba(255,255,255,.04);
+    }
+
+    footer{
+      text-align:center;
+      color:#b0aebb;
+      font-size:12px;
+      margin-top:16px;
+      padding-bottom:10px;
+    }
+
+    @media (max-width:900px){
+      body::before{
+        background:
+          linear-gradient(rgba(4,4,8,0.80), rgba(7,7,12,0.86)),
+          url("assets/tubi-background.png") 34% center / cover no-repeat;
+      }
+    }
+
+    @media (max-width:480px){
+      body::before{
+        background:
+          linear-gradient(rgba(4,4,8,0.82), rgba(7,7,12,0.88)),
+          url("assets/tubi-background.png") 30% center / cover no-repeat;
+      }
+      .stats, .cta-row{grid-template-columns:1fr}
+      .hero{padding:24px 16px 18px}
+      .section{padding:16px}
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="hero">
+      <div class="glow cyan"></div>
+      <div class="glow pink"></div>
+
+      <div class="avatar-wrap">
+        <!-- QUI PUOI CAMBIARE L'AVATAR PRINCIPALE -->
+        <img class="avatar" src="assets/tubi-avatar.png" alt="Avatar di Tubi VTuber">
+      </div>
+
+      <div class="badge"><span class="dot"></span> Pagina ufficiale VTuber</div>
+      <h1>Tubipunizzz</h1>
+      <p class="subtitle">
+        aka <span class="highlight">Tubi VTuber</span> · link ufficiali, clip, live e aggiornamenti in un solo posto.
+      </p>
+
+      <div class="stats">
+        <div class="stat"><strong>TikTok</strong><span>video e clip</span></div>
+        <div class="stat"><strong>YouTube</strong><span>contenuti e shorts</span></div>
+        <div class="stat"><strong>More</strong><span>working progress</span></div>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Chi è Tubi</h2>
+      <p>
+        Ciao sono Tubi, amo il mondo ddei video giochi ,come vedrai sono 
+        un "tengo" e come tale tengo molto ai miei follower <3 .
+      </p>
+    </section>
+
+    <section class="section">
+      <h2>Link ufficiali</h2>
+      <div class="links">
+
+        <!-- QUI C'È IL LINK TIKTOK -->
+        <a class="link-card" href="https://www.tiktok.com/@tubipunizzz?_r=1&_t=ZN-951NEc71zhG" target="_blank" rel="noopener noreferrer">
+          <div class="link-left">
+            <div class="icon"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></div>
+            <div>
+              <div class="link-title">TikTok</div>
+              <div class="link-desc">Profilo ufficiale Tubipunizzz</div>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <!-- QUI C'È IL LINK YOUTUBE -->
+        <a class="link-card" href="https://youtube.com/@tubopuni?si=ghA7ri9xPD5V1JLh" target="_blank" rel="noopener noreferrer">
+          <div class="link-left">
+            <div class="icon"><i class="fa-brands fa-youtube" aria-hidden="true"></i></div>
+            <div>
+              <div class="link-title">YouTube</div>
+              <div class="link-desc">Canale ufficiale e video</div>
+            </div>
+          </div>
+          <div class="arrow">›</div>
+        </a>
+
+        <!-- QUI POTRAI METTERE IN FUTURO IL LINK TWITCH -->
+        <div class="disabled-card">
+          <div class="link-left">
+            <div class="icon"><i class="fa-brands fa-twitch" aria-hidden="true"></i></div>
+            <div>
+              <div class="link-title">Twitch</div>
+              <div class="link-desc">Working progress</div>
+            </div>
+          </div>
+          <div class="tag">WIP</div>
+        </div>
+
+        <!-- QUI POTRAI METTERE IN FUTURO IL LINK INSTAGRAM -->
+        <div class="disabled-card">
+          <div class="link-left">
+            <div class="icon"><i class="fa-brands fa-instagram" aria-hidden="true"></i></div>
+            <div>
+              <div class="link-title">Instagram</div>
+              <div class="link-desc">Working progress</div>
+            </div>
+          </div>
+          <div class="tag">WIP</div>
+        </div>
+
+        <!-- QUI POTRAI METTERE IN FUTURO IL LINK DISCORD -->
+        <div class="disabled-card">
+          <div class="link-left">
+            <div class="icon"><i class="fa-brands fa-discord" aria-hidden="true"></i></div>
+            <div>
+              <div class="link-title">Discord</div>
+              <div class="link-desc">Working progress</div>
+            </div>
+          </div>
+          <div class="tag">WIP</div>
+        </div>
+      </div>
+
+      <div class="cta-row">
+        <!-- QUI POTRAI METTERE IN FUTURO UN LINK DONAZIONI -->
+        <div class="mini-btn-disabled">Donazioni · Working progress</div>
+
+        <!-- QUI POTRAI CAMBIARE QUESTA MAIL -->
+        <a class="mini-btn" href="mailto:workingprogress@example.com">Contatti · Working progress</a>
+      </div>
+    </section>
+
+    <section class="section">
+      <h2>Sfondo del sito</h2>
+      <p>
+        Ho spostato l'immagine di sfondo più a sinistra e ho lasciato un overlay scuro per far vedere meglio
+        i dettagli senza disturbare troppo la lettura del sito.
+      </p>
+    </section>
+
+    <footer>© <span id="year"></span> Tubipunizzz · Tubi VTuber</footer>
+  </main>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
